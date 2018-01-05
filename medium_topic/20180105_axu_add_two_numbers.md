@@ -12,7 +12,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 
 ### Solution
-#### Approach1:
+#### Approach1:(Time Limit Exceeded)
 
 ```ruby
 # Definition for singly-linked list.
@@ -69,6 +69,54 @@ def add_two_numbers(l1, l2)
     end
 end
 ```
+#### Approach2(Accepted)
+```ruby
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} l1
+# @param {ListNode} l2
+# @return {ListNode}
+def add_two_numbers(l1, l2)
+
+    lead = 0
+    cur_link_node = ListNode.new(0)
+    result = cur_link_node
+    loop do
+        if l1 !=nil || l2 != nil
+            first_num = l1.nil? ? 0 : l1.val 
+            second_num = l2.nil? ? 0: l2.val 
+            sum = first_num + second_num + lead
+            val = sum % 10
+            lead = sum / 10
+            cur_link_node.next = ListNode.new(val)
+            cur_link_node = cur_link_node.next
+            l1 = l1.nil? ? nil : l1.next
+            l2 = l2.nil? ? nil : l2.next
+        else
+            break
+        end
+    end
+     if lead > 0
+        val = lead
+        cur_link_node.next = ListNode.new(val)
+        cur_link_node = cur_link_node.next 
+    end
+
+    return result.next
+
+end
+```
 
 #### Answer Link
 [ReferToTheGivenAnswer](https://leetcode.com/articles/add-two-numbers/)
+
+### Conclusion
+ReferTo:
+- [ruby-linked-list](http://www.rubyguides.com/2017/08/ruby-linked-list/)
