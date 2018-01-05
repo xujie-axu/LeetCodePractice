@@ -12,6 +12,7 @@ You may assume that each input would have exactly one solution, and you may not 
 
 ### Solution
 #### Approach1:
+
 ```ruby
 # @param {Integer[]} nums
 # @param {Integer} target
