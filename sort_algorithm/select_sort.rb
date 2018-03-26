@@ -1,3 +1,4 @@
+#encoding: utf-8
 class SortAlgorithm
 
   UNORDERED_ARR = [1,4,6,3,2,7,8,5,11,3,4,45,9]
@@ -15,38 +16,29 @@ class SortAlgorithm
     unorder = unorder.nil? ? UNORDERED_ARR : unorder
     len = unorder.size
     order = []
-    count = 1
     puts "**************************排序开始******************************"
     start_time = Time.now
     puts "需排序的数组为：#{unorder}"
-    loop do
-      # count为比较次数，一共比较(unorder.size) 次比较到最后一个元素，则跳出循环比较
-      if count == len
-        order << unorder[0]
-        break
-      end
 
-      puts "第#{count}次排序,带排序的数组为：#{unorder}"
-      # 找出未排序的数组里的最小值
-      smallest = unorder[0]
-      smallest_index = 0
-      (1..unorder.size - 1).each do |i|
-        if unorder[i] < smallest
-          smallest       = unorder[i]
-          smallest_index = i
+    (0..(len-1)).each do |i|
+      smallest = unorder[i]
+
+      ((i+1)..(len-1)).each do |j|
+        tmp = 0
+        if unorder[j] < smallest
+          tmp = smallest
+          smallest = unorder[j]
+          unorder[j] = tmp
         end
       end
 
-      unorder.delete_at(smallest_index)
-      order << smallest
-      puts "第#{count}次排序最小的元素为：#{smallest}, 该元素所在位置为：#{smallest_index}"
-      puts "第#{count}次排序数组为：#{order}"
-      puts "================================================================="
-
-      count += 1
+      unorder[i] = smallest
+      puts "第#{i+1}次排序，最小的数为：#{smallest} , 排序结果：#{unorder}"
     end
+
+    order = unorder
     puts "#{order}"
-    puts "总耗时： #{Time.now - start_time}"
+    puts "总耗时： #{Time.now - start_time}s"
     puts "**************************排序结束******************************"
   end
 end
