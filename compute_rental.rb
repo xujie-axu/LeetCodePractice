@@ -62,8 +62,8 @@ class Room
     _axu   = r3 * private_avg_price + _public_avg * public_avg_price
     _ying  = r4 * private_avg_price + _public_avg * public_avg_price
 
-    puts "不加菊菊的费用：计算公式：（4个房间的人均公共面积+ 私人面积）/总面积 * 每平方的钱） 曦曦：#{xixi}, 阿黄：#{huang}, 啊徐：#{axu}, 小姐姐：#{ying}"
-    puts "加上菊菊的费用:  计算公式：（5个人的人均公共面积 * 加权公共面积每平方的钱 + 私人面积 * 加权的私人面积每平方的钱）  曦曦：#{_xixi}, 阿黄：#{_huang}, 啊徐：#{_axu}, 小姐姐：#{_ying}"
+    puts "计算公式：（4个房间的人均公共面积+ 私人面积）/总面积 * 每平方的钱） 曦曦：#{xixi}, 阿黄：#{huang}, 啊徐：#{axu}, 小姐姐：#{ying}"
+    puts "加权比例#{public_rate} : #{private_rate}  计算公式：（5个人的人均公共面积 * 加权公共面积每平方的钱 + 私人面积 * 加权的私人面积每平方的钱）  曦曦：#{_xixi}, 阿黄：#{_huang}, 啊徐：#{_axu}, 小姐姐：#{_ying}"
   end
 
   def weight_price(total_amount=6600, area={_public: 3837, _private:  3832}, weight={_public: 4, _private: 6})
@@ -73,3 +73,4 @@ class Room
 end
 
 Room.new.compute_rental(4, 6)
+Room.new.compute_rental(3, 7)
