@@ -14,7 +14,6 @@ class SortAlgorithm
   #
   # ==== Procedure
   #
-  #
   def merge_sort(unorder)
     unorder = unorder.nil? ? UNORDERED_ARR : unorder
     tmp_arr = []
