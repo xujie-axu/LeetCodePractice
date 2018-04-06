@@ -16,7 +16,7 @@ class SortAlgorithm
   #   （如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
   #
   def insert_sort(unorder)
-    unorder = unorder.present? ? unorder : UNORDERED_ARR
+    unorder = unorder.nil? ? UNORDERED_ARR : unorder
     len = unorder.size
     order = []
     order << unorder[0]
@@ -132,3 +132,5 @@ class SortAlgorithm
     puts "**************************排序结束******************************"
   end
 end
+
+SortAlgorithm.new.insert_sort(nil)
