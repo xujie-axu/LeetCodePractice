@@ -13,12 +13,22 @@ class SortAlgorithm
   #  最小单位为1的子序列认为是有序
   #
   # ==== Procedure
+  #  1  4  6  3  2  7  5
+  #
+  # [1  4][6  3][2  7][5]
+  #  \  /  \  /  \  /  |
+  # [1  4][3  6][2  7][5]
+  #    \    /      \   /
+  # [ 1 3 4 6 ]  [2 5 7]
+  #      \          /
+  #    [1 2 3 4 5 6 7]
   #
   def merge_sort(unorder)
     unorder = unorder.nil? ? UNORDERED_ARR : unorder
     tmp_arr = []
     start_time = Time.now
     divide_arr(unorder, 0, unorder.size - 1, tmp_arr)
+    puts unorder.to_s
     puts "归并排序总耗时：#{Time.now - start_time}s"
   end
 
